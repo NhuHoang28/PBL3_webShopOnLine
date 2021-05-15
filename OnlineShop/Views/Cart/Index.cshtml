@@ -1,0 +1,69 @@
+﻿@model List<OnlineShop.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var OverSoLuong = (List<string>)ViewBag.OverSoLuong;
+}
+@section jsFooter{
+    <script src="/Assets/client/js/controller/CartController.js"></script>
+}
+<br />
+<br />
+@foreach (var item in OverSoLuong)
+{
+    <br />
+
+    <h4> @item  </h4>
+
+}
+<br />
+<br />
+@if (Model.Count() > 0)
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Mã sách</td>
+                <td>Tên sách</td>
+                <td>Ảnh sách</td>
+                <td>Số lượng</td>
+                <td>Đơn giá</td>
+                <td>Thành tiền</td>
+                <td>Tùy chọn </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.SanPham.MaSach</td>
+                    <td>@item.SanPham.TenSach</td>
+                    <td><img src="@item.SanPham.HinhAnh" width="100" /></td>
+                    <td><input type="text" class="txtSoLuong" data-id="@item.SanPham.MaSach" value="@item.SoLuong" /></td>
+                    <td>@item.SanPham.DonGia.GetValueOrDefault(0).ToString("N0")</td>
+                    <td>@((item.SoLuong* item.SanPham.DonGia.GetValueOrDefault(0)).ToString("N0"))</td>
+                    <td> <button id="btnUpdate">Cập nhật</button>|<a href="#" data-id="@item.SanPham.MaSach" class="Delete">Xóa </a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <div>
+
+    </div>
+
+    <button id="btnContinue" class="btn">Tiếp tục mua hàng</button>
+    <button id="btnUpdateAll" class="btn">Cập nhật giỏ hàng</button>
+    <button id="btnDeleteAll" class="btn">Xóa giỏ hàng</button>
+    <button id="btnPayment" class="btn">Thanh toán</button>
+
+}
+
+
+else
+{
+    <span class=" alert alert-danger">
+        Chưa có sản phẩm trong giỏ hàng
+    </span>
+}

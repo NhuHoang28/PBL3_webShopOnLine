@@ -1,0 +1,67 @@
+﻿@model List<Model.EF.DonHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var UserId = (long)ViewBag.UserId;
+}
+@section jsFooter{
+    <script src="/Assets/client/js/controller/CartController.js"></script>
+}
+<br />
+<h2><a class="btn next" href="/User/EditTTCN/@UserId"><span class="glyphicon glyphicon-user" style="font-size: 3em;"></span></a></h2>
+<h2><a class="btn next" href="/User/LogOut"><span class="	glyphicon glyphicon-log-out" style="font-size: 3em;"></span></a></h2>
+
+<br />
+<H3> Toàn thể đơn hàng của bạn </H3>
+<br />
+@if (Model.Count() > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Mã đơn hàng</td>
+                <td>Ngày đặt</td>
+                <td>Tên người nhận</td>
+                <td>Số điện thoại người nhận</td>
+                <td>Email</td>
+                <td>Trạng thái</td>
+                <td>Địa chỉ nhận </td>
+                <td>Ghi chú </td>
+                <td>Tổng tiền </td>
+                <td>Khác </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaDonHang</td>
+                    <td>@item.NgayDat</td>
+                    <td>@item.TenNguoiNhan </td>
+                    <td>@item.SDTNguoiNhan </td>
+                    <td>@item.Email </td>
+                    <td>@item.TrangThai </td>
+                    <td>@item.DiaChiNhan </td>
+                    <td>@item.GhiChu   </td>
+                    <td>@item.TongTien   </td>
+                    <td> <a class="btn next" href="/User/ChiTiet/@item.MaDonHang"><span class="glyphicon glyphicon-th-list"></span></a> </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <div>
+
+    </div>
+
+}
+
+
+else
+{
+    <span class=" alert alert-danger">
+        Bạn chưa đặt hàng lần nào
+    </span>
+}
+
+

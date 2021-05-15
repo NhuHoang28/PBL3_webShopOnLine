@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+{
+
+<form class="form-search">
+
+    <div class="col-xs-6">
+        <div class="form-group">
+            <label class="small mb-1" for="inputPassword">Nhập số điện thoại</label>
+            <input name="ID" class="form-control" />
+        </div>
+        <div class="col-xs-6">
+
+        </div>
+        <div class="form-group">
+            <label class="small mb-1" for="inputPassword">Nội dung góp ý</label>
+            <input name="Contact" class="form-control" />
+        </div>
+            
+
+            <button type="submit" class="btn"><span class="glyphicon glyphicon-envelope"></span></button>
+
+</form>
+}

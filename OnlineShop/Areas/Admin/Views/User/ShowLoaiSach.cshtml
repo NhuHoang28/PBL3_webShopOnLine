@@ -1,0 +1,46 @@
+﻿@model List<Model.EF.LoaiSach>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<script src="~/Assets/client/js/controller/CartController.js"></script>
+
+
+@if (Model.Count() > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Mã loại sách</td>
+                <td>Tên loại sách</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaLoaiSach</td>
+                    <td>@item.TenLoaiSach</td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <div>
+
+    </div>
+
+}
+
+
+else
+{
+    <span class=" alert alert-danger">
+        Chưa đặt hàng lần nào
+    </span>
+}
+
+

@@ -1,0 +1,12 @@
+﻿@model List<Model.EF.LoaiSach>
+<div class="dropdown-inner">
+    <ul class="list-unstyled">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="~/Product/Category/@item.TenLoaiSach">@item.TenLoaiSach</a>
+            </li>
+        }
+
+    </ul>
+</div>

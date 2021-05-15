@@ -1,0 +1,43 @@
+﻿@model List<Model.EF.SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<div id="page-content" class="single-page">
+    <div class="container">
+        <div class="row">
+            <div id="main-content">
+                <div class="row">
+                    <div class="products">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-4 col-md-3 col-xs-12">
+                                <div class="product">
+                                    <div class="image"><a href="~/Product/DetailProduct/@item.MaSach"><img src="@item.HinhAnh" /></a></div>
+                                    <div class="buttons">
+
+                                    </div>
+                                    <div class="caption">
+                                       <h5> <a class="btn cart" href="/Admin/User/SuaSanPham/@item.MaSach">  Chỉnh sửa</a></h5>
+                                        ||
+                                       <h5> <a class="btn cart" href="/Admin/User/XoaSanPham/@item.MaSach">  Xóa </a></h5>
+                                         </div>
+                                    <div class="caption">
+                                        <div class="name"><h3><a href="~/Product/DetailProduct/@item.MaSach">@item.TenSach</a></h3></div>
+                                        <div class="price">$@item.DonGia</div>
+                                        <div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

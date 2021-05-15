@@ -1,0 +1,73 @@
+﻿@model PagedList.PagedList<Model.EF.User>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+@section header{
+    Danh sách người dùng
+}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                
+                <div class="panel-body">
+
+                    @using (Html.BeginForm("Index", "User", FormMethod.Get))
+                    {
+                        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                            <div class="input-group">
+                                <input class="form-control" type="text" value="@ViewBag.SearchString" placeholder="Search for..." name="searchString" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    }
+
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+
+                                <th>Tên tài khoản</th>
+                                <th>Họ và tên</th>
+                                <th>Giới tính</th>
+                                <th>Địa chỉ</th>
+                                <th>Số điện thoại</th>
+                                <th>Email</th>
+                                <th>Kích hoạt</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+
+                                <td>@item.UserName</td>
+                                <td>@item.HoTen</td>
+                                <td>@item.GioiTinh</td>
+                                <td>@item.DiaChi</td>
+                                <td>@item.DienThoai</td>
+                                <td>@item.Email</td>
+                                <td>@(item.KichHoat==false?"Kích hoạt":"Khóa")</td>
+                                <td>
+                                    <a href="/Admin/User/Edit/@item.IdUser">Sửa</a>
+                                    |
+                                    <a href="/Admin/User/Delete/@item.IdUser">Xóa</a>
+                                    |
+                                    <a href="/Admin/User/DonHang/@item.IdUser">Đơn hàng</a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }));
+                </div>
+
+            </div>
+        </div>
+    </div>

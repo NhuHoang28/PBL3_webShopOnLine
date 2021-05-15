@@ -1,0 +1,80 @@
+﻿
+@model Model.EF.SanPham
+@{
+    ViewBag.Title = "DetailProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var RelatedProduct = (List<Model.EF.SanPham>)ViewBag.RelatedProduct;
+    var tacgia = (Model.EF.TacGia)ViewBag.TacGia;
+    var loaisach = (Model.EF.LoaiSach)ViewBag.LoaiSach;
+}
+
+<div class="row">
+    <div id="main-content">
+        <div class="product">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3">
+                <div class="image">
+                    <img src="@Model.HinhAnh" />
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="caption">
+                    <div class="name"><h3>@Model.TenSach</h3></div>
+                    <div class="info">
+                        <ul>
+                            <li>Brand: text</li>
+                            <li>ID: @Model.MaSach</li>
+                        </ul>
+                    </div>
+                    <div class="price">$@Model.DonGia</div>
+                    <div class="price">Tác giả: @tacgia.TenTacGia</div>
+                    <div class="price">Thể loại: @loaisach.TenLoaiSach</div>
+                    <div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>
+                    <div class="well"><label>Qty: </label> <input class="form-inline quantity" type="text" value="1111"><a href="/them-gio-hang?MaSach=@Model.MaSach&SoLuong=1" class="btn btn-2 ">ADD</a></div>
+
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="product-desc">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#description">Description</a></li>
+                
+            </ul>
+            <div class="tab-content">
+                <div id="description" class="tab-pane fade in active">
+                    <h4>Thông tin rõ hơn về sách</h4>
+                    <p>@Model.NoiDung </p>
+                    </div>
+            </div>
+        </div>
+        <div class="product-related">
+            <div class="heading"><h2>RELATED PRODUCTS</h2></div>
+            <div class="products">
+                @foreach (var item in RelatedProduct)
+                {
+                    <div class="col-lg-3 col-xs-12">
+                        <div class="product">
+                            <div class="image"><a href="~/Product/DetailProduct/@item.MaSach"><img src="@item.HinhAnh" /></a></div>
+                            <div class="buttons">
+                                <a class="btn cart" href="/them-gio-hang?MaSach=@item.MaSach&SoLuong=1"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                                <a class="btn wishlist" href="#"><span class="glyphicon glyphicon-heart"></span></a>
+                                <a class="btn compare" href="#"><span class="glyphicon glyphicon-transfer"></span></a>
+                            </div>
+                            <div class="caption">
+                                <div class="name"><h3><a href="~/Product/DetailProduct/@item.MaLoaiSach">@item.TenSach</a></h3></div>
+                                <div class="price">$@item.DonGia</div>
+                                <div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+

@@ -1,0 +1,93 @@
+﻿@model Model.EF.SanPham
+@{
+    ViewBag.Title = "ThemSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Nhập thông tin cá nhân
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+
+                        @using (Html.BeginForm("ThemSanPham", "User", FormMethod.Post))
+                        {
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputPassword">Mã sách</label>
+                                <input name="MaSach" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputPassword">Mã tác giả</label>
+                                <input name="MaTacGia" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputPassword">Mã loại sách</label>
+                                <input name="MaLoaiSach" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputPassword">Tên sách</label>
+                                <input name="TenSach" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputPassword">Nội dung</label>
+                                <input name="NoiDung" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputPassword">Đường dẫn hình ảnh</label>
+                                <label class="small mb-1" for="inputPassword">Ví dụ:/Assets/client/images/dacnhantam.jpg</label>
+                                <input name="HinhAnh" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputPassword">Đơn giá</label>
+                                <input name="DonGia" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputPassword">Số lượng</label>
+                                <input name="SoLuong" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputPassword">Tình trạng</label>
+                                <input name="TinhTrang" class="form-control" />
+                            </div>
+
+                            
+
+
+
+
+
+
+                            
+
+
+
+
+                            <div class="form-group">
+                                <div style="border=5px;padding=5px">
+                                    <input type="submit" value="Create" class="btn btn-default" style="border: 1px solid #000000" />
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
